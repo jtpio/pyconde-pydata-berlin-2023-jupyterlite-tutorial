@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 extensions = [
     'myst_parser',
-    'jupyterlite_sphinx'
 ]
-
-jupyterlite_dir = "."
-jupyterlite_contents = "content"
 
 master_doc = 'README'
 source_suffix = '.md'
