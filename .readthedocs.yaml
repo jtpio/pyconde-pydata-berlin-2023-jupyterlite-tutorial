@@ -6,7 +6,7 @@ build:
     python: "mambaforge-4.10"
   jobs:
     post_build:
-      - voici build --contents content --apps lab --apps retro
+      - voici build --contents notebooks --apps lab --apps retro
       - cp -r _output _readthedocs/html/_static/lite
 
 conda:

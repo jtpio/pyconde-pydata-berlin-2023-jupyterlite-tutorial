@@ -25,11 +25,18 @@ curl micro.mamba.pm/install.sh | bash
 Or check the documentation for more details: https://mamba.readthedocs.io/en/latest/installation.html#micromamba
 
 ```bash
-mamba create -n jupyterlite -c conda-forge python=3.11 -y
+mamba create -n jupyterlite-tutorial -c conda-forge python=3.11 -y
 mamba activate
 ```
 
-For the rest of the tutorial, make sure you are in the `jupyterlite` environment.
+For the rest of the tutorial, make sure you are in the `jupyterlite-tutorial` environment.
+
+As an alternative you can also use the `venv` module from the standard library:
+
+```bash
+python -m venv jupyterlite-tutorial
+source jupyterlite-tutorial/bin/activate
+```
 
 ### Install the JupyterLite CLI
 
@@ -39,7 +46,14 @@ Then you can install the JupyterLite CLI with:
 pip install "jupyterlite-core[lab]"
 ```
 
-The [lab] extra installs additional dependencies for content and localization.
+You can also use `mamba` to install the packages:
+
+```bash
+# the jupyterlab-server dependency will be needed later
+mamba install -c conda-forge jupyterlite-core jupyterlab-server
+```
+
+The [lab] extra (or the `jupyterlab-server` dependency) installs additional dependencies for content and localization.
 
 ### Get an empty JupyterLite website
 
@@ -185,6 +199,19 @@ TODO
 ### Templates
 
 TODO
+
+### Adding Voici options to the `jupyter_lite_config.json` file
+
+You can also provide the Voici options in the `jupyter_lite_config.json` file instead of using the command line:
+
+```json
+{
+  "VoilaConfiguration": {
+    "theme": "dark",
+    "template": "material"
+  }
+}
+```
 
 ## Extras
 
