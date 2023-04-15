@@ -23,14 +23,14 @@ jobs:
       - name: Install mamba
         uses: mamba-org/provision-with-micromamba@main
         with:
-          micromamba-version: '0.22.0'
+          micromamba-version: '1.4.2'
           environment-file: 'build-environment.yml'
 
       - name: Build the JupyterLite site
         shell: bash -l {0}
         run: |
           cp README.md content
-          jupyter lite build --contents content --output-dir dist
+          voici build --contents content --output-dir dist --apps lab --apps retro
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
