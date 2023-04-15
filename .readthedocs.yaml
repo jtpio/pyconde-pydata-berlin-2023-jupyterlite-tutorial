@@ -4,6 +4,9 @@ build:
   os: "ubuntu-20.04"
   tools:
     python: "mambaforge-4.10"
+  jobs:
+    post_build:
+      - voici build --contents content --output-dir _readthedocs/html/_static/lite --apps lab --apps retro
 
 conda:
   environment: build-environment.yml
