@@ -2,13 +2,17 @@
 marp: true
 ---
 
+
 # Create interactive Jupyter websites with JupyterLite 💡
 
-## PyConDE & PyData Berlin 2023 🐍
+![bg fit right:33%](https://raw.githubusercontent.com/jupyterlite/jupyterlite/main/docs/_static/icon.svg)
+
+## 🐍 PyConDE & PyData Berlin 2023 🐍
 
 ### 2023-04-19
 
 #### Jeremy Tuloup
+
 
 ---
 
@@ -135,13 +139,21 @@ Embed with:
 
 ---
 
+# Strengths
+
+- Easy to deploy
+- Simpler for users (no need to install Python and other packages locally)
+- Educational use cases
+- Reproducibility time capsule
+
+---
+
 # Limitations
 
 - Suited for lighter workloads
-- Not all packages are available or ever will be
-- Subset of Python running in the browser (no multitreading, no multiprocessing
+- Not all packages are available (or ever will be)
+- Subset of Python running in the browser
 - Initial asset download can be big (~30MB), then cached by the browser
-
 
 ---
 
