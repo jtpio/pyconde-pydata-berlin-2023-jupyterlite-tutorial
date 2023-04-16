@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 extensions = [
     'myst_parser',
+    'sphinxcontrib.video',
 ]
 
 myst_enable_extensions = [

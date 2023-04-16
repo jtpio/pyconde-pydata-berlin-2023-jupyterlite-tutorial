@@ -9,4 +9,5 @@ dependencies:
   - sphinx-autobuild
   - pip:
     - jupyterlite-xeus-python >=0.8.0,<0.9.0
+    - sphinxcontrib-video
     - voici >=0.3.3,<0.4.0
