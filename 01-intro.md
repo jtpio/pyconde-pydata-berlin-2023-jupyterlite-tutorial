@@ -68,8 +68,8 @@ pip install jupyterlite-core
 
 # Standing on the shoulders of giants 💁‍♂️
 
-- ✳️ Built from the ground-up using JupyterLab components and extensions
-- ✳️ The frontend communicates to the in-browser kernels via the Jupyter Protocol
+-  Built from the ground-up using JupyterLab components and extensions
+- The frontend communicates to the in-browser kernels via the Jupyter Protocol
 
 ![height:400px](https://user-images.githubusercontent.com/591645/162748538-e44fea00-f727-4055-b795-8f5fc5c6b133.png)
 
