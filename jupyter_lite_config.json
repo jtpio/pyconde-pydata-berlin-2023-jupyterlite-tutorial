@@ -1,0 +1,10 @@
+{
+  "LiteBuildConfig": {
+    "content": ["notebooks"],
+    "apps": ["lab", "retro"]
+  },
+  "VoilaConfiguration": {
+    "theme": "dark",
+    "template": "material"
+  }
+}
