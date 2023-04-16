@@ -111,6 +111,14 @@ As an alternative you can also start a Python server with:
 python -m http.server 8000 --directory _output
 ```
 
+Then open the following URL in your browser: http://localhost:8000
+
+You will be redirected to the JupyterLab interface by default, which should look like the following:
+
+![raw jupyterlite](https://user-images.githubusercontent.com/591645/226575239-0cccd2de-b881-4be9-a396-c33ba0117087.png)
+
+If you would like to access the Notebook interface, you can use the following URL: http://localhost:8000/tree
+
 ### Add a kernel
 
 To add a Python kernel to your JupyterLite website, you can install the `jupyterlite-xeus-python` package:
@@ -170,7 +178,7 @@ pip install jupyterlab-night
 Then rebuild the website with:
 
 ```bash
-jupyter lite build
+jupyter lite build --contents notebooks
 ```
 
 ```{note}
@@ -190,7 +198,7 @@ pip install jupyterlab-language-pack-fr-FR
 Then rebuild the website with:
 
 ```bash
-jupyter lite build
+jupyter lite build --contents notebooks
 ```
 
 ### Installing extra Python packages
@@ -201,7 +209,49 @@ This section is for installing extra Python packages for that particular kernel.
 We will see below how to install extra Python packages for the Pyodide kernel.
 ```
 
-TODO
+Open the `environment.yml` file and add the extra Python packages you would like to install.
+
+For example let's add `folium` and `ipywidgets`:
+
+```yaml
+name: jupyterlite-tutorial
+channels:
+- https://repo.mamba.pm/conda-forge
+- https://repo.mamba.pm/emscripten-forge
+dependencies:
+- ipywidgets=8
+- folium
+```
+
+The Xeus Python kernel automatically installs the packages from the `environment.yml` file when the website is built.
+
+Then rebuild the website with:
+
+```bash
+jupyter lite build --contents notebooks
+```
+
+The new packages should now be available in the Python kernel at startup. You can check it is the case by running the following cell:
+
+```python
+import folium
+print(folium.__version__)
+import ipywidgets
+print(ipywidgets.__version__)
+```
+
+
+```{warning}
+At the time of writing, the `jupyterlite-xeus-python` package does not support installing extra Python packages
+from PyPI using the `pip` section in `environment.yml`.
+So the packages have to be available on conda-forge or emscripten-forge.
+There is however a work-in-progress PR to add this feature.
+```
+
+```{note}
+If you use a package not available on the two channels mentioned above, please open an issue on the Emscripten Forge repository:
+https://github.com/emscripten-forge/recipes
+```
 
 ```{note}
 Refer to the documentation for more details: https://jupyterlite.readthedocs.io/en/latest/howto/xeus-python/preinstalled_packages.html
@@ -211,17 +261,56 @@ Refer to the documentation for more details: https://jupyterlite.readthedocs.io/
 
 The `jupyter_lite_config.json` file contains the configuration to build a JupyterLite website.
 
-This file is picked up automatically when running the `jupyter lite build` command.
+This file is picked up automatically when running the `jupyter lite build` command. It is a convenient way to nicely encode the configuration of a JupyterLite website and avoid having to pass a long list of command line arguments.
 
-TODO
+At the root of the repo, create the `jupyter_lite_config.json` file with the following content:
+
+```json
+{
+  "LiteBuildConfig": {
+    "content": ["notebooks"]
+  }
+}
+```
+
+Then rebuild the website with:
+
+```bash
+jupyter lite build
+```
+
+The site will still include the contents like before, but we didn't have to pass the `--content notebooks` argument.
 
 ### The `jupyter_lite.json` file
 
 The `jupyter_lite.json` file contains the *runtime* configuration of a JupyterLite website.
 
-TODO
+With this file, you can for example configure the name of the app, or which extensions to disable:
 
-## Voici: from Jupyter Notebook into a static web application
+```json
+{
+  "jupyter-lite-schema-version": 0,
+  "jupyter-config-data": {
+    "appName": "JupyterLite Tutorial"
+  }
+}
+```
+
+Then rebuild the website with:
+
+```bash
+jupyter lite build
+```
+
+You should be able to see the new name in the Help menu:
+
+![app name in the help menu](https://user-images.githubusercontent.com/591645/232298151-ed340eb1-f591-4910-b651-86c3170130a6.png)
+
+```{note}
+Refer to the documentation for more details: https://jupyterlite.readthedocs.io/en/latest/reference/schema-v0.html
+```
+
+## Voici: from Jupyter notebooks to static web applications
 
 ![voila](https://raw.githubusercontent.com/voila-dashboards/voila/main/docs/source/voila-logo.svg)
 
@@ -234,8 +323,27 @@ pip install voici
 Then use the `voici` command to create a static website. In this case we also include the other JupyterLab and Notebook interfaces so they are still available:
 
 ```bash
-voici build --contents notebooks --apps jupyterlab --apps retro
+voici build --apps jupyterlab --apps retro
 ```
+
+You can also specify the apps you want to include in the `jupyter_lite_config.json` file:
+
+```json
+{
+  "LiteBuildConfig": {
+    "content": ["notebooks"],
+    "apps": ["lab", "retro"]
+  }
+}
+```
+
+And then rebuild the website simply with:
+
+```bash
+voici build
+```
+
+Open your browser and navigate to `http://localhost:8000/voici/tree` to see the Voici application.
 
 ### Templates
 
@@ -271,6 +379,23 @@ Here is what a Voici dashboard looks like with the Material template:
 
 ![a screenshot showing a Voici dashboard with the Material template](https://user-images.githubusercontent.com/591645/231569683-7df59ff8-239e-4dee-ad15-3208e0b9c761.png)
 
+### Adding Voici options to the `jupyter_lite_config.json` file
+
+You can also provide the Voici options in the `jupyter_lite_config.json` file instead of using the command line:
+
+```json
+{
+  "LiteBuildConfig": {
+    "content": ["notebooks"],
+    "apps": ["lab", "retro"]
+  },
+  "VoilaConfiguration": {
+    "theme": "dark",
+    "template": "material"
+  }
+}
+```
+
 ### Themes
 
 You can also use different themes for your Voici application.
@@ -281,7 +406,7 @@ To use the Dark theme, you can use the `--theme` option when building your Voici
 voici build --theme dark
 ```
 
-You can also the `?theme` query parameter to choose the theme while accessing the dashboard. For example:
+You can also use the `?theme` query parameter to choose the theme on the fly while accessing the dashboard. For example:
 
 ```text
 https://you-voici-deployment.example.com/voici/render/voici.html?theme=dark
@@ -300,19 +425,6 @@ if you would like to use an option not supported by Voici yet.
 ```
 
 
-### Adding Voici options to the `jupyter_lite_config.json` file
-
-You can also provide the Voici options in the `jupyter_lite_config.json` file instead of using the command line:
-
-```json
-{
-  "VoilaConfiguration": {
-    "theme": "dark",
-    "template": "material"
-  }
-}
-```
-
 ### Deploying a Voici dashboard on GitHub Pages
 
 You can easily deploy Voici to GitHub Pages using the [voici-demo](https://github.com/voila-dashboards/voici-demo) template repository.
@@ -330,4 +442,3 @@ The template repository contains a GitHub Action that builds the Voici applicati
 With the Pyodide kernel you can install extra Python packages:
 
 https://jupyterlite.readthedocs.io/en/latest/howto/pyodide/packages.html
-
