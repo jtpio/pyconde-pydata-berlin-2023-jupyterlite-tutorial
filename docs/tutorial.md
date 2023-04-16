@@ -2,6 +2,8 @@
 
 This tutorial will walk you through the steps to create a JupyterLite website locally with the `jupyter-lite` CLI.
 
+![](https://raw.githubusercontent.com/jupyterlite/jupyterlite/main/docs/_static/icon.svg)
+
 ## Deploy on GitHub Pages
 
 If you would like to deploy your JupyterLite website on GitHub Pages, you can follow the following quickstart guide:
@@ -10,7 +12,15 @@ https://jupyterlite.readthedocs.io/en/latest/quickstart/index.html
 
 This is likely the easiest to get a JupyterLite up and running in just a couple of minutes, without setting up a development environment.
 
+![Deploy your own](../deploy.gif)
+
 ## Using the `jupyter-lite` CLI
+
+![jupyterlite-core CLI](https://user-images.githubusercontent.com/591645/232284263-7aa98589-a599-4f84-bc85-0c8fa799780b.png)
+
+```{note}
+Refer to the documentation for more details: https://jupyterlite.readthedocs.io/en/latest/quickstart/standalone.html
+```
 
 ### Create a new virtual environment
 
@@ -31,39 +41,41 @@ mamba activate
 
 For the rest of the tutorial, make sure you are in the `jupyterlite-tutorial` environment.
 
+````{note}
 As an alternative you can also use the `venv` module from the standard library:
 
 ```bash
 python -m venv jupyterlite-tutorial
 source jupyterlite-tutorial/bin/activate
 ```
+````
 
 ### Install the JupyterLite CLI
 
-Then you can install the JupyterLite CLI with:
-
-```bash
-pip install "jupyterlite-core[lab]"
-```
-
-You can also use `mamba` to install the packages:
+Install the JupyterLite CLI with:
 
 ```bash
 # the jupyterlab-server dependency will be needed later
 mamba install -c conda-forge jupyterlite-core jupyterlab-server
 ```
 
-The [lab] extra (or the `jupyterlab-server` dependency) installs additional dependencies for content and localization.
+You can also use `pip`:
+
+```bash
+pip install "jupyterlite-core[lab]"
+```
+
+The `[lab]` extra (or the `jupyterlab-server` dependency) installs additional dependencies for content and localization.
 
 ### Get an empty JupyterLite website
 
-You can create an empty JupyterLite website with:
+Create an empty JupyterLite website with:
 
 ```bash
 jupyter lite init
 ```
 
-By default, this will create a new folder `_output` with the minimal content of the JupyterLite website. You can check the content with the following command:
+By default, this will create a new folder `_output` with the minimal content of the JupyterLite website. You can check the content of the folder with the following command:
 
 ```bash
 ls _output
@@ -88,7 +100,10 @@ You can serve the website locally with:
 jupyter lite serve
 ```
 
+```{warning}
 By default `jupyterlite-core` does not include any kernel.
+We will see how to add one in the next section.
+```
 
 As an alternative you can also start a Python server with:
 
@@ -112,6 +127,10 @@ jupyter lite build
 
 It should now be possible to run a Python notebook in your JupyterLite website.
 
+```{note}
+Refer to the documentation for more details: https://jupyterlite.readthedocs.io/en/latest/howto/configure/kernels.html
+```
+
 ### Adding content
 
 Then let's create a new folder to store the notebooks:
@@ -126,6 +145,10 @@ Then rebuild the website with:
 
 ```bash
 jupyter lite build --content notebooks
+```
+
+```{note}
+Refer to the documentation for more details: https://jupyterlite.readthedocs.io/en/latest/howto/index.html#contents
 ```
 
 ### Adding extensions
@@ -148,6 +171,10 @@ Then rebuild the website with:
 
 ```bash
 jupyter lite build
+```
+
+```{note}
+Refer to the documentation for more details: https://jupyterlite.readthedocs.io/en/latest/howto/configure/simple_extensions.html
 ```
 
 ### Localization and display languages
@@ -176,11 +203,23 @@ TODO
 
 ### Installing extra Python packages
 
+```{note}
+As a reminder we have been using the `jupyterlite-xeus-python` package to add a Python kernel to our JupyterLite website.
+This section is for installing extra Python packages for that particular kernel.
+We will see below how to install extra Python packages for the Pyodide kernel.
+```
+
 TODO
+
+```{note}
+Refer to the documentation for more details: https://jupyterlite.readthedocs.io/en/latest/howto/xeus-python/preinstalled_packages.html
+```
 
 ## Voici: from Jupyter Notebook into a static web application
 
-Install Voici with pip:
+![voila](https://raw.githubusercontent.com/voila-dashboards/voila/main/docs/source/voila-logo.svg)
+
+Install Voici with `pip`:
 
 ```bash
 pip install voici
@@ -192,13 +231,68 @@ Then use the `voici` command to create a static website. In this case we also in
 voici build --contents notebooks --apps jupyterlab --apps retro
 ```
 
-### Themes
-
-TODO
-
 ### Templates
 
-TODO
+You can use different templates for your Voici application.
+
+Templates can modify the layout and the appearance of your Voici application. Here are a few template examples:
+
+- [Voila Material](https://github.com/voila-dashboards/voila-material): Material design template for Voilà
+- [Voila GridStack](https://github.com/voila-dashboards/voila-gridstack): Dashboard template for Voilà based on GridStackJS
+
+These templates were originally developed for Voilà, but they can also be used with Voici.
+
+To install a template, you can use the `pip` command:
+
+```bash
+pip install voila-material
+```
+
+You can also add the template to your dependencies in the `environment.yml` file:
+
+```yaml
+dependencies:
+  - voila-material
+```
+
+Once the template is installed, you can use it by specifying the `--template` option when building your Voici application:
+
+```bash
+voici build --template voila-material
+```
+
+Here is what a Voici dashboard looks like with the Material template:
+
+![a screenshot showing a Voici dashboard with the Material template](https://user-images.githubusercontent.com/591645/231569683-7df59ff8-239e-4dee-ad15-3208e0b9c761.png)
+
+### Themes
+
+You can also use different themes for your Voici application.
+
+To use the Dark theme, you can use the `--theme` option when building your Voici application:
+
+```bash
+voici build --theme dark
+```
+
+You can also the `?theme` query parameter to choose the theme while accessing the dashboard. For example:
+
+```text
+https://you-voici-deployment.example.com/voici/render/voici.html?theme=dark
+```
+
+## Additional Configuration
+
+Voici supports additional configuration provided by JupyterLite, such as using custom extensions and settings.
+
+You can refer to the [JupyterLite documentation](https://jupyterlite.readthedocs.io/en/latest/howto/index.html) for more information.
+
+```{warning}
+Some configuration options might not supported yet.
+Please don't hesitate to open an issue on the [Voici repository](https://github.com/voila-dashboards/voici)
+if you would like to use an option not supported by Voici yet.
+```
+
 
 ### Adding Voici options to the `jupyter_lite_config.json` file
 

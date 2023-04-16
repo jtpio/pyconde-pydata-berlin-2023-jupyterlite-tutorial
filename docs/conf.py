@@ -3,16 +3,20 @@ extensions = [
     'myst_parser',
 ]
 
-master_doc = 'README'
+myst_enable_extensions = [
+    "linkify",
+]
+
+
+master_doc = 'index'
 source_suffix = '.md'
 
 # General information about the project.
 project = 'PyConDE & PyData Berlin 2023 - JupyterLite Tutorial'
 author = 'Jeremy Tuloup'
 
-exclude_patterns = []
+exclude_patterns = ["01-intro.md"]
 highlight_language = 'python'
 pygments_style = 'sphinx'
 
 html_theme = "pydata_sphinx_theme"
-html_static_path = ['_static']

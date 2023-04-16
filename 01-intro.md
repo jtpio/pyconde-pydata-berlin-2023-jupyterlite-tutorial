@@ -29,7 +29,11 @@ marp: true
 # The `jupyter-lite` CLI is a **Static Site Generator** (SSG)
 
 ```shell
+# install the CLI
 pip install jupyterlite-core
+
+# build the website
+jupyter lite build
 ```
 
 ---
@@ -66,12 +70,12 @@ pip install jupyterlite-core
 
 ---
 
-# Standing on the shoulders of giants 💁‍♂️
+![bg fit right height:400px](https://user-images.githubusercontent.com/591645/162748538-e44fea00-f727-4055-b795-8f5fc5c6b133.png)
+
+# Standing on the shoulders of giants
 
 -  Built from the ground-up using JupyterLab components and extensions
 - The frontend communicates to the in-browser kernels via the Jupyter Protocol
-
-![height:400px](https://user-images.githubusercontent.com/591645/162748538-e44fea00-f727-4055-b795-8f5fc5c6b133.png)
 
 ---
 
@@ -163,4 +167,4 @@ Embed with:
 - Adding content: notebooks, files and static assets
 - Adding extensions to the user interface
 - Adding packages to the Python runtime
-- Customization and custom settings
+- Customization and settings

@@ -10,6 +10,6 @@ Materials for the "Create interactive Jupyter websites with JupyterLite" tutoria
 
 ## Outline
 
-- [Introduction](./01-intro.md)
-- [Tutorial](./02-tutorial.md)
+- Introduction
+- Tutorial
 - Questions
