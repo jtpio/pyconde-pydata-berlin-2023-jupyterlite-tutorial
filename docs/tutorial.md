@@ -13,7 +13,7 @@ The notebook will allow for plotting photos and pictures on a map displayed with
 Here is a preview of the final result:
 
 ```{video} https://user-images.githubusercontent.com/591645/232456713-e8dc2396-d050-4840-9756-051e9c1f3ead.mp4
-
+:width: 800
 ```
 
 ## Deploy on GitHub Pages
@@ -466,7 +466,7 @@ You can easily deploy Voici to GitHub Pages using the [voici-demo](https://githu
 The template repository contains a GitHub Action that builds the Voici application and deploys it to GitHub Pages. It also contains an `environment.yml` file where you can specify the packages you need. You can also add Notebooks to the `content` folder.
 
 ```{video} https://user-images.githubusercontent.com/591645/222892327-2a5b1341-640d-49c2-9e95-1f2d3ec122be.mp4
-
+:width: 800
 ```
 
 ## Extras
