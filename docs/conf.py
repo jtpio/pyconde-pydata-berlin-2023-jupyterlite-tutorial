@@ -8,6 +8,10 @@ myst_enable_extensions = [
     "linkify",
 ]
 
+html_static_path = [
+    "../_output",
+]
+
 
 master_doc = 'index'
 source_suffix = '.md'
