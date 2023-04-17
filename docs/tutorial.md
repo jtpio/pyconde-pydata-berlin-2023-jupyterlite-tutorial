@@ -473,9 +473,39 @@ The template repository contains a GitHub Action that builds the Voici applicati
 
 ### Using the Pyodide kernel
 
-With the Pyodide kernel you can install extra Python packages:
+With the Pyodide kernel you can also install extra Python packages:
 
 https://jupyterlite.readthedocs.io/en/latest/howto/pyodide/packages.html
+
+However at the moment you will also need to install the packages in the notebook so they are available.
+
+First in your virtual environment, install the packages:
+
+```bash
+pip install ipywidgets folium
+```
+
+Then rebuild JupyterLite with:
+
+```
+jupyter lite build
+```
+
+Open the browser and navigate to `http://localhost:8000` to see the JupyterLite application.
+
+Finally, in the notebook, install the packages:
+
+```
+%pip install -q ipywidgets folium
+```
+
+If you create a new cell and run the following code, you should see a map:
+
+```python
+import folium
+m = folium.Map()
+m
+```
 
 ## Going further
 
