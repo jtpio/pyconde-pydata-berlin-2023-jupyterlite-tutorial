@@ -4,6 +4,18 @@ This tutorial will walk you through the steps to create a JupyterLite website lo
 
 ![](https://raw.githubusercontent.com/jupyterlite/jupyterlite/main/docs/_static/icon.svg)
 
+## What we will be building
+
+We will be building a JupyterLite website so that users can interact with a Jupyter notebook without having to install anything locally.
+
+The notebook will allow for plotting photos and pictures on a map displayed with `folium`.
+
+Here is a preview of the final result:
+
+```{video} https://user-images.githubusercontent.com/591645/232456713-e8dc2396-d050-4840-9756-051e9c1f3ead.mp4
+
+```
+
 ## Deploy on GitHub Pages
 
 If you would like to deploy your JupyterLite website on GitHub Pages, you can follow the following quickstart guide:
