@@ -4,6 +4,18 @@ This tutorial will walk you through the steps to create a JupyterLite website lo
 
 ![](https://raw.githubusercontent.com/jupyterlite/jupyterlite/main/docs/_static/icon.svg)
 
+## What we will be building
+
+We will be building a JupyterLite website so that users can interact with a Jupyter notebook without having to install anything locally.
+
+The notebook will allow for plotting photos and pictures on a map displayed with `folium`.
+
+Here is a preview of the final result:
+
+```{video} https://user-images.githubusercontent.com/591645/232456713-e8dc2396-d050-4840-9756-051e9c1f3ead.mp4
+:width: 800
+```
+
 ## Deploy on GitHub Pages
 
 If you would like to deploy your JupyterLite website on GitHub Pages, you can follow the following quickstart guide:
@@ -249,8 +261,30 @@ There is however a work-in-progress PR to add this feature.
 ```
 
 ```{note}
+**What is Emscripten Forge?**
+
+As the name suggests it is based on the Emscripten toolchain: https://emscripten.org.
+
+> Compile C and C++ code, or any other language that uses LLVM, into WebAssembly, and run it on the Web, Node.js, or other wasm runtimes.
+
+The goal of the Emscripten Forge project is to enable the **composability of computing environments** allowed by package managers and to adopt the conda-forge model for large-scale software distribution crowdsourcing.
+
+Many packages have already been packaged for Emscripten Forge, thanks to the work on the Pyodide (many recipes are the same).
+
+
+The long term will be to contributing this work to the conda-forge project, so that all recipes live in the same space.
+
+Please have the look at the blog post for more information: https://blog.jupyter.org/mamba-meets-jupyterlite-88ef49ac4dc8
+```
+
+```{note}
 If you use a package not available on the two channels mentioned above, please open an issue on the Emscripten Forge repository:
 https://github.com/emscripten-forge/recipes
+
+You can search for a specific packages using the following links:
+
+- https://prefix.dev/channels/conda-forge
+- https://beta.mamba.pm/channels/emscripten-forge?tab=packages
 ```
 
 ```{note}
@@ -432,7 +466,7 @@ You can easily deploy Voici to GitHub Pages using the [voici-demo](https://githu
 The template repository contains a GitHub Action that builds the Voici application and deploys it to GitHub Pages. It also contains an `environment.yml` file where you can specify the packages you need. You can also add Notebooks to the `content` folder.
 
 ```{video} https://user-images.githubusercontent.com/591645/222892327-2a5b1341-640d-49c2-9e95-1f2d3ec122be.mp4
-
+:width: 800
 ```
 
 ## Extras
@@ -442,3 +476,19 @@ The template repository contains a GitHub Action that builds the Voici applicati
 With the Pyodide kernel you can install extra Python packages:
 
 https://jupyterlite.readthedocs.io/en/latest/howto/pyodide/packages.html
+
+## Going further
+
+You can have a look at the following resources to learn more about JupyterLite and Voici:
+
+- [JupyterLite documentation](https://jupyterlite.readthedocs.io/en/latest/)
+- [Voici documentation](https://voici.readthedocs.io/en/latest/)
+
+Running Python in the browser is made possible by the great of the CPython and Pyodide contributors.
+A lot of the Emscripten Forge are based on the work of the Pyodide team. Check out the following resources to learn more:
+
+- [Pyodide documentation](https://pyodide.org/en/stable/)
+- [Pyodide GitHub repository](https://github.com/pyodide/pyodide)
+- [Emscripten Forge](https://github.com/emscripten-forge/recipes)
+
+You can also check the PyScript project too which is also based on Pyodide: https://pyscript.net/
