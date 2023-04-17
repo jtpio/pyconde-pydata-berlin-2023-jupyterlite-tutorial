@@ -67,8 +67,8 @@ source jupyterlite-tutorial/bin/activate
 Install the JupyterLite CLI with:
 
 ```bash
-# the jupyterlab-server dependency will be needed later
-mamba install -c conda-forge jupyterlite-core jupyterlab-server
+# the jupyterlab_server dependency will be needed later
+mamba install -c conda-forge jupyterlite-core jupyterlab_server
 ```
 
 You can also use `pip`:
@@ -77,7 +77,7 @@ You can also use `pip`:
 pip install "jupyterlite-core[lab]"
 ```
 
-The `[lab]` extra (or the `jupyterlab-server` dependency) installs additional dependencies for content and localization.
+The `[lab]` extra (or the `jupyterlab_server` dependency) installs additional dependencies for content and localization.
 
 ### Get an empty JupyterLite website
 
@@ -161,6 +161,10 @@ mkdir notebooks
 
 Create a new notebook in the `notebooks` folder, and add other files you would like to include in your website.
 
+```{note}
+As an example you could use this notebook: https://github.com/norvig/pytudes/blob/main/ipynb/Sudoku.ipynb
+```
+
 Then rebuild the website with:
 
 ```bash
@@ -226,7 +230,7 @@ Open the `environment.yml` file and add the extra Python packages you would like
 For example let's add `folium` and `ipywidgets`:
 
 ```yaml
-name: jupyterlite-tutorial
+name: jupyterlite-tutorial-demo
 channels:
 - https://repo.mamba.pm/conda-forge
 - https://repo.mamba.pm/emscripten-forge
@@ -360,6 +364,12 @@ Then use the `voici` command to create a static website. In this case we also in
 voici build --apps jupyterlab --apps retro
 ```
 
+And then rebuild the website simply with:
+
+```bash
+voici build
+```
+
 You can also specify the apps you want to include in the `jupyter_lite_config.json` file:
 
 ```json
@@ -371,13 +381,14 @@ You can also specify the apps you want to include in the `jupyter_lite_config.js
 }
 ```
 
-And then rebuild the website simply with:
+Open your browser and navigate to `http://localhost:8000/voici/tree` to see the Voici application.
+
+```{note}
+If you encounter an issue, you can try to clear the build cache with:
 
 ```bash
-voici build
+rm .jupyterlite.doit.db
 ```
-
-Open your browser and navigate to `http://localhost:8000/voici/tree` to see the Voici application.
 
 ### Templates
 
@@ -406,12 +417,28 @@ dependencies:
 Once the template is installed, you can use it by specifying the `--template` option when building your Voici application:
 
 ```bash
-voici build --template voila-material
+voici build --template material
 ```
 
 Here is what a Voici dashboard looks like with the Material template:
 
 ![a screenshot showing a Voici dashboard with the Material template](https://user-images.githubusercontent.com/591645/231569683-7df59ff8-239e-4dee-ad15-3208e0b9c761.png)
+
+### Themes
+
+You can also use different themes for your Voici application.
+
+To use the Dark theme, you can use the `--theme` option when building your Voici application:
+
+```bash
+voici build --template material --theme dark
+```
+
+You can also use the `?theme` query parameter to choose the theme on the fly while accessing the dashboard. For example:
+
+```text
+https://you-voici-deployment.example.com/voici/render/voici.html?theme=dark
+```
 
 ### Adding Voici options to the `jupyter_lite_config.json` file
 
@@ -430,23 +457,28 @@ You can also provide the Voici options in the `jupyter_lite_config.json` file in
 }
 ```
 
-### Themes
+### Adding our application
 
-You can also use different themes for your Voici application.
+Now is time to add our notebook so it can be deployed as a static dashboard with Voici.
 
-To use the Dark theme, you can use the `--theme` option when building your Voici application:
+Fetch the notebook from the GitHub repository and place it in the `notebooks` folder: https://github.com/jtpio/pyconde-pydata-berlin-2023-jupyterlite-tutorial/blob/main/notebooks/demo.ipynb
 
-```bash
-voici build --theme dark
+Follow the steps mentioned above to build your app.
+
+You can first open JupyterLite in the browser and navigate to the `notebooks` folder to execute the notebook.
+
+Then change the URL to `http://localhost:8000/voici/render/demo.ipynb` to see the Voici dashboard.
+
+```{note}
+You can now deploy your Voici application to GitHub Pages or any other static website hosting service 🎉 🥳
 ```
 
-You can also use the `?theme` query parameter to choose the theme on the fly while accessing the dashboard. For example:
-
-```text
-https://you-voici-deployment.example.com/voici/render/voici.html?theme=dark
+```{note}
+You can see the final result on the tutorial website:
+https://jtpio.github.io/pyconde-pydata-berlin-2023-jupyterlite-tutorial/voici/render/demo.html
 ```
 
-## Additional Configuration
+### Additional Configuration
 
 Voici supports additional configuration provided by JupyterLite, such as using custom extensions and settings.
 
@@ -457,7 +489,6 @@ Some configuration options might not supported yet.
 Please don't hesitate to open an issue on the [Voici repository](https://github.com/voila-dashboards/voici)
 if you would like to use an option not supported by Voici yet.
 ```
-
 
 ### Deploying a Voici dashboard on GitHub Pages
 
@@ -482,7 +513,11 @@ However at the moment you will also need to install the packages in the notebook
 First in your virtual environment, install the packages:
 
 ```bash
-pip install ipywidgets folium
+pip install jupyterlite-pyodide-kernel ipywidgets folium
+```
+
+```{note}
+The `jupyterlite-pyodide-kernel` package installs the Pyodide kernel.
 ```
 
 Then rebuild JupyterLite with:
