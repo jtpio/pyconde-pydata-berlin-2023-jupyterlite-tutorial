@@ -476,3 +476,19 @@ The template repository contains a GitHub Action that builds the Voici applicati
 With the Pyodide kernel you can install extra Python packages:
 
 https://jupyterlite.readthedocs.io/en/latest/howto/pyodide/packages.html
+
+## Going further
+
+You can have a look at the following resources to learn more about JupyterLite and Voici:
+
+- [JupyterLite documentation](https://jupyterlite.readthedocs.io/en/latest/)
+- [Voici documentation](https://voici.readthedocs.io/en/latest/)
+
+Running Python in the browser is made possible by the great of the CPython and Pyodide contributors.
+A lot of the Emscripten Forge are based on the work of the Pyodide team. Check out the following resources to learn more:
+
+- [Pyodide documentation](https://pyodide.org/en/stable/)
+- [Pyodide GitHub repository](https://github.com/pyodide/pyodide)
+- [Emscripten Forge](https://github.com/emscripten-forge/recipes)
+
+You can also check the PyScript project too which is also based on Pyodide: https://pyscript.net/
