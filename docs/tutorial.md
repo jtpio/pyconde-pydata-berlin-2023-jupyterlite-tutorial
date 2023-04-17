@@ -249,8 +249,30 @@ There is however a work-in-progress PR to add this feature.
 ```
 
 ```{note}
+**What is Emscripten Forge?**
+
+As the name suggests it is based on the Emscripten toolchain: https://emscripten.org.
+
+> Compile C and C++ code, or any other language that uses LLVM, into WebAssembly, and run it on the Web, Node.js, or other wasm runtimes.
+
+The goal of the Emscripten Forge project is to enable the **composability of computing environments** allowed by package managers and to adopt the conda-forge model for large-scale software distribution crowdsourcing.
+
+Many packages have already been packaged for Emscripten Forge, thanks to the work on the Pyodide (many recipes are the same).
+
+
+The long term will be to contributing this work to the conda-forge project, so that all recipes live in the same space.
+
+Please have the look at the blog post for more information: https://blog.jupyter.org/mamba-meets-jupyterlite-88ef49ac4dc8
+```
+
+```{note}
 If you use a package not available on the two channels mentioned above, please open an issue on the Emscripten Forge repository:
 https://github.com/emscripten-forge/recipes
+
+You can search for a specific packages using the following links:
+
+- https://prefix.dev/channels/conda-forge
+- https://beta.mamba.pm/channels/emscripten-forge?tab=packages
 ```
 
 ```{note}
