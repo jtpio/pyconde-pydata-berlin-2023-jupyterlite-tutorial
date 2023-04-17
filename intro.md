@@ -1,18 +1,39 @@
 ---
 marp: true
+paginate: true
 ---
 
-
-# Create interactive Jupyter websites with JupyterLite 💡
+<style>
+section::after {
+  content: attr(data-marpit-pagination) '/' attr(data-marpit-pagination-total);
+}
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+</style>
 
 ![bg fit right:33%](https://raw.githubusercontent.com/jupyterlite/jupyterlite/main/docs/_static/icon.svg)
 
-## 🐍 PyConDE & PyData Berlin 2023 🐍
+## :bulb: Create interactive Jupyter websites with JupyterLite
 
-### 2023-04-19
+### :snake: PyConDE & PyData Berlin 2023
 
-#### Jeremy Tuloup
+#### :date: 2023-04-19
 
+#### :bust_in_silhouette: Jeremy Tuloup
+
+- https://github.com/jtpio
+- https://twitter.com/jtpio
+- https://fosstodon.org/@jtp
+
+---
+
+# Last year at the conference (2022)
+
+https://www.youtube.com/watch?v=4rDRs_W9ICM
+
+![h:500px](https://user-images.githubusercontent.com/591645/232592514-ad51ca68-f176-4b78-af0f-76e60313ff70.png)
 
 ---
 
@@ -22,7 +43,7 @@ marp: true
 
 # Boots in seconds
 
-![height:600px](https://user-images.githubusercontent.com/591645/120649478-18258400-c47d-11eb-80e5-185e52ff2702.gif)
+![center h:600px](https://user-images.githubusercontent.com/591645/120649478-18258400-c47d-11eb-80e5-185e52ff2702.gif)
 
 ---
 
@@ -41,7 +62,7 @@ jupyter lite build
 
 # Lightweight Jupyter Frontend running in the browser
 
-![width:512](https://raw.githubusercontent.com/jupyterlite/jupyterlite/main/docs/_static/badge-launch.svg)
+![center w:512](https://raw.githubusercontent.com/jupyterlite/jupyterlite/main/docs/_static/badge-launch.svg)
 
 - ✅ no server
 - ✅ no command line
@@ -83,7 +104,7 @@ jupyter lite build
 
 - https://developer.mozilla.org/en-US/docs/WebAssembly
 
-![height:400px](https://user-images.githubusercontent.com/591645/162831191-16956085-783a-435e-b810-0d25da1379b3.png)
+![center h:400px](https://user-images.githubusercontent.com/591645/162831191-16956085-783a-435e-b810-0d25da1379b3.png)
 
 ---
 
@@ -101,7 +122,7 @@ jupyter lite build
 
 # Embed a live Python console on your website 🚀
 
-![height:300px](https://user-images.githubusercontent.com/591645/162619390-ecab994a-3f39-4e26-af78-ca2569aee9b2.png)
+![center h:300px](https://user-images.githubusercontent.com/591645/162619390-ecab994a-3f39-4e26-af78-ca2569aee9b2.png)
 
 Embed with:
 
@@ -118,28 +139,27 @@ Embed with:
 
 # [numpy.org](https://numpy.org)
 
-![image](https://user-images.githubusercontent.com/591645/162569443-40e841ad-f42d-44eb-966f-c1c810c1ab10.png)
+![center](https://user-images.githubusercontent.com/591645/162569443-40e841ad-f42d-44eb-966f-c1c810c1ab10.png)
 
 ---
 
 # [sympy.org](https://sympy.org)
 
-![height:500px](https://user-images.githubusercontent.com/591645/167361691-da1252e7-17f4-4bbf-8eee-ba3bfaff8c2e.png)
+![center h:500px](https://user-images.githubusercontent.com/591645/167361691-da1252e7-17f4-4bbf-8eee-ba3bfaff8c2e.png)
 
 ---
 
 # [try.jupyter.org](https://try.jupyter.org)
 
--️ Help reduce the load on [mybinder.org](https://mybinder.org)
--️ Huge savings: trade compute resources (1 GB / 1 CPU) for static assets
+-️ Help reduce the load on [mybinder.org](https://mybinder.org): trade compute resources (1 GB / 1 CPU) for static assets
 
-![height:500px](https://user-images.githubusercontent.com/591645/162569510-56287b4b-acf2-47f9-90af-7b0605c5b112.png)
+![center h:400px](https://user-images.githubusercontent.com/591645/162569510-56287b4b-acf2-47f9-90af-7b0605c5b112.png)
 
 ---
 
 # [jupyterlite-sphinx](https://jupyterlite-sphinx.readthedocs.io/en/latest/)
 
-![height:500px](https://user-images.githubusercontent.com/591645/162838828-d6407725-15d9-4640-8aa6-c8c8979a9a3f.png)
+![center h:500px](https://user-images.githubusercontent.com/591645/162838828-d6407725-15d9-4640-8aa6-c8c8979a9a3f.png)
 
 ---
 
@@ -168,3 +188,5 @@ Embed with:
 - Adding extensions to the user interface
 - Adding packages to the Python runtime
 - Customization and settings
+- Build a small application with Jupyter Widgets
+- Create a static dashboard
