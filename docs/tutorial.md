@@ -20,11 +20,22 @@ Here is a preview of the final result:
 
 If you would like to deploy your JupyterLite website on GitHub Pages, you can follow the following quickstart guide:
 
-https://jupyterlite.readthedocs.io/en/latest/quickstart/index.html
+https://jupyterlite.readthedocs.io/en/latest/quickstart/deploy.html
 
 This is likely the easiest to get a JupyterLite up and running in just a couple of minutes, without setting up a development environment.
 
 ![Deploy your own](../deploy.gif)
+
+
+```{note}
+**Working via the GitHub UI directly**
+
+If you encounter any issue with the following steps, you can also use the GitHub UI directly to create a new repository and work from there.
+
+You can start from the template repository: https://github.com/jupyterlite/xeus-python-demo
+
+Follow the previous section to get started. Then you can use the GitHub UI to edit the files and commit the changes.
+```
 
 ## Using the `jupyter-lite` CLI
 
@@ -400,6 +411,10 @@ If you encounter an issue, you can try to clear the build cache with:
 
 ```bash
 rm .jupyterlite.doit.db
+```
+
+```{note}
+If you are using the GitHub repository template for working on your site, you can update the build command defined in the `.github/workflows/deploy.yml` file:
 ```
 
 ### Templates
