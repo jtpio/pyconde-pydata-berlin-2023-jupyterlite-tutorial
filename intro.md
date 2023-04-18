@@ -117,6 +117,7 @@ jupyter lite build
    - matplotlib
    - ipywidgets
    - plotly
+   - and more...
 
 ---
 
@@ -151,7 +152,7 @@ Embed with:
 
 # [try.jupyter.org](https://try.jupyter.org)
 
--️ Help reduce the load on [mybinder.org](https://mybinder.org): trade compute resources (1 GB / 1 CPU) for static assets
+Help reduce the load on [mybinder.org](https://mybinder.org): trade compute resources (1 GB / 1 CPU) for static assets
 
 ![center h:400px](https://user-images.githubusercontent.com/591645/162569510-56287b4b-acf2-47f9-90af-7b0605c5b112.png)
 
@@ -165,7 +166,7 @@ Embed with:
 
 # Strengths
 
-- Easy to deploy
+- Easy to deploy (static files)
 - Simpler for users (no need to install Python and other packages locally)
 - Educational use cases
 - Reproducibility time capsule
@@ -190,3 +191,7 @@ Embed with:
 - Customization and settings
 - Build a small application with Jupyter Widgets
 - Create a static dashboard
+
+---
+
+# https://pyconde2023-jupyterlite.rtfd.io
