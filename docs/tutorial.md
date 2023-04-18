@@ -352,6 +352,18 @@ Refer to the documentation for more details: https://jupyterlite.readthedocs.io/
 
 ![voila](https://raw.githubusercontent.com/voila-dashboards/voila/main/docs/source/voila-logo.svg)
 
+### What is Voila?
+
+Voila is a Python package that can convert Jupyter notebooks into standalone web applications.
+
+Link to the repository: https://github.com/voila-dashboards/voila
+
+### Installing Voici
+
+```{warning}
+🚧 Voici is still very new and subject to changes!
+```
+
 Install Voici with `pip`:
 
 ```bash
