@@ -413,6 +413,10 @@ If you encounter an issue, you can try to clear the build cache with:
 rm .jupyterlite.doit.db
 ```
 
+```{note}
+If you are using the GitHub repository template for working on your site, you can update the build command defined in the `.github/workflows/deploy.yml` file:
+```
+
 ### Templates
 
 You can use different templates for your Voici application.
