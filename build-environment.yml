@@ -7,8 +7,8 @@ dependencies:
   - pip
   - pydata-sphinx-theme
   - sphinx-autobuild
-  - voila-material
+  - voila-material=0.4.3
   - pip:
-    - jupyterlite-xeus-python >=0.8.0,<0.9.0
+    - jupyterlite-xeus-python==0.8.0
     - sphinxcontrib-video
-    - voici >=0.3.3,<0.4.0
+    - voici==0.3.3
