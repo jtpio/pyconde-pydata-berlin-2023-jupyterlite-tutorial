@@ -13,3 +13,7 @@ Materials for the "Create interactive Jupyter websites with JupyterLite" tutoria
 - Introduction
 - Tutorial
 - Questions
+
+At the end of tutorial you will be able to deploy a static dashboard for displaying photos and pictures on a `folium` map:
+
+![image](https://user-images.githubusercontent.com/591645/233269835-d038f742-853a-4c15-90e3-f38700cc2f2f.png)
