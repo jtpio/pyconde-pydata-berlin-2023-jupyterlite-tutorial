@@ -4,4 +4,4 @@ channels:
   - https://repo.mamba.pm/conda-forge
 dependencies:
   - ipywidgets=8.0.6
-  - folium=0.14
+  - folium=0.15
